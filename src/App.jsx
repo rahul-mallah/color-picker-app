@@ -6,8 +6,12 @@ function App() {
 
   const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff', '#000000'];
 
+  const handleColorClick = (color) => {
+    setBackgroundColor(color);
+  }
+  
   return (
-    <div>
+    <div className='App' style={{backgroundColor}}>
       <h1>Color Picker</h1>
       <div className='color-palette'>
         {colors.map((color, index) => (
@@ -15,9 +19,16 @@ function App() {
             key={index}
             className='color-box'
             style={{backgroundColor: color}}
-            onClick={() => {}}
+            onClick={() => handleColorClick(color)}
           ></div>
         ))}
+      </div>
+
+      <div className='custom-color-picker'>
+        <input type='color'
+          value={backgroundColor}
+          onChange={(e) => handleColorClick(e.target.value)}>
+          </input>
       </div>
     </div>
   )
